@@ -6,10 +6,11 @@
 
     <TextView
         android:id="@+id/tituloTXT"
-        tools:visibility="gone"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IMC"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:text="@string/title_imc"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="48sp"
         android:textStyle="bold" />
@@ -17,26 +18,29 @@
     <EditText
         android:id="@+id/pesoEDT"
         style="@style/input_style"
+        android:layout_below="@id/tituloTXT"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Insira seu peso: (ex: 65.8 kg)" />
+        android:layout_marginTop="80dp"
+        android:hint="@string/peso_hint" />
 
     <EditText
         android:id="@+id/alturaEDT"
-        tools:visibility="gone"
         style="@style/input_style"
+        android:layout_below="@id/pesoEDT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Insira sua altura: (ex: 1.78 m)" />
+        android:layout_marginTop="60dp"
+        android:hint="@string/altura_hint" />
 
     <Button
         android:id="@+id/calculaBT"
-        tools:visibility="gone"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="46dp"
+        android:layout_alignParentBottom="true"
         android:backgroundTint="@android:color/holo_green_light"
         android:padding="16dp"
-        android:text="Calcular" />
+        android:text="@string/calcular_button"
+        android:textSize="16sp" />
 </RelativeLayout>
