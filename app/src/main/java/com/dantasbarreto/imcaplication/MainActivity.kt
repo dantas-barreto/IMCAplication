@@ -1,44 +1,31 @@
 package com.dantasbarreto.imcaplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.w("lifeclycle", "entrei no CREATE - estou criando a tela")
+        setListeners()
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.w("lifecycle", "entrei no START - deixei a tela visível para você")
+    private fun setListeners() {
+        calculaBT?.setOnClickListener {
+            calcularIMC(pesoEDT.text.toString(), alturaEDT.text.toString())
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.w("lifecycle", "entrei no RESUME - agora você pode interagir com a tela")
-    }
+     fun calcularIMC(peso: String, altura: String) {
+        val peso = peso.toFloatOrNull()
+        val altura = altura.toFloatOrNull()
 
-    override fun onPause() {
-        super.onPause()
-        Log.w("lifecycle", "entrei no PAUSE - a tela perdeu o foco, você não pode mais ineragir")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.w("lifecycle", "entrei no STOP - a tela não está mais visível mas ainda existe")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.w("lifecycle", "entrei no RESTART - a tela está retomando o foco")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.w("lifecycle", "entrei no DESTROY - ah não! a tela foi destruída")
+        if (peso != null && altura != null) {
+            val imc = peso / (altura * altura)
+            tituloTXT.text = "Seu IMC é: \n%.2f".format(imc)
+        }
     }
 }
